@@ -1,23 +1,20 @@
-const url = 'https://pokeapi.co/api/v2/pokemon/squirtle/';
+const url = 'https://pokeapi.co/api/v2/pokemon/nidorino';
 
 // Use fetch to get data from the API
 fetch(url)
   .then(response => {
-    // Convert the response to JSON
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
     return response.json();
   })
   .then(data => {
     // Extract and print the required information
     const name = data.name;
     const weight = data.weight;
-    const abilities = data.abilities.map(ability => ability.ability.name).join(", ");
+    const abilities = data.abilities
 
     console.log(`Name: ${name}`);
     console.log(`Weight: ${weight}`);
-    console.log(`Abilities: ${abilities}`);
+    console.log(`Abilities: ${JSON.stringify(abilities, null, 2)}`);
+    
   })
   .catch(error => {
     // Handle any errors
